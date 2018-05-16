@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 var config = {
     entry: {
         main: './main' //从这个文件开始寻找依赖
@@ -7,7 +8,43 @@ var config = {
         path: path.join(__dirname, './dist'), //存放打包文件输出目录
         publicPath: '/dist', //制定资源文件引用目录
         filename: 'main.js' //生成的文件名
-    }
+    },
+    module: {
+        // rules:[{
+        //     test: /\.css/,
+        //     use: ['style-loader', 'css-loader']
+        // }]
+        rules: [
+            {
+                test: /\.vue/,
+                loader: 'vue-loader',
+                options: {
+                    loaders: {
+                        //把vue文件里面的css也提取出来
+                        css: ExtractTextPlugin.extract({
+                            use: 'css-loader',
+                            fallback: 'vue-style-loader'
+                        })
+                    }
+                }
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    use: 'css-loader',
+                    fallback: 'style-loader'
+                })
+            }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin('main.css')
+    ]
 };
 
 module.exports = config;
