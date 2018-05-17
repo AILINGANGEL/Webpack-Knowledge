@@ -3,6 +3,7 @@
     <div> hello {{name}}</div>
     <v-title title="vue组件化"></v-title>
     <v-button @click="handleClick">点击按钮</v-button>
+    <img src="./images/flower.jpeg">
 </div>
 </template>
 <script>

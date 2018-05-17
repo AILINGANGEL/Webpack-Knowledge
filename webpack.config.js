@@ -6,7 +6,7 @@ var config = {
     },
     output: {
         path: path.join(__dirname, './dist'), //存放打包文件输出目录
-        publicPath: '/dist', //制定资源文件引用目录
+        publicPath: '/dist/', //制定资源文件引用目录
         filename: 'main.js' //生成的文件名
     },
     module: {
@@ -22,7 +22,7 @@ var config = {
                     loaders: {
                         //把vue文件里面的css也提取出来
                         css: ExtractTextPlugin.extract({
-                            use: 'css-loader',
+                            use: 'css-loader?minimize', //加上minimize参数就可以对css文件也进行压缩
                             fallback: 'vue-style-loader'
                         })
                     }
@@ -39,6 +39,11 @@ var config = {
                     use: 'css-loader',
                     fallback: 'style-loader'
                 })
+            },
+            {
+                //最终生成的路径是和publicPath拼接而成的绝对路径
+                test: /\.(gif|jpg|jpeg|png|woff|svg|eot|ttf)\??.*$/,
+                loader: 'url-loader?limit=1024'//如果小于1kb，这些文件都会转成base64来加载,否则会占用一次请求
             }
         ]
     },
