@@ -1,3 +1,7 @@
+body {
+    height: 2000px;
+}
+
 #app {
     color: red;
     font-size: 16px;
