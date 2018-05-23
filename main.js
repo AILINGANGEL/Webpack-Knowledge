@@ -3,9 +3,11 @@ import Vue from 'vue';
 import App from './app.vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+import Bus from './vue-bus.js';
 import './style.css';
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(Bus);
 const routes = [{
     path: '/index',
     meta: {
