@@ -21,6 +21,12 @@ const routes = [{
     },
     component: (resolve) => require(['./views/about.vue'], resolve)
 },{
+    path: '/demo',
+     meta: {
+        title: '锚点页'
+    },
+    component: (resolve) => require(['./views/demo.vue'], resolve)
+},{
     path: '/user/:id',
      meta: {
         title: '个人主页'
