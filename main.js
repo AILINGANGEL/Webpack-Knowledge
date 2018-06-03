@@ -38,6 +38,12 @@ const routes = [{
         title: '函数组件'
     },
     component: (resolve) => require(['./views/func.vue'], resolve)
+},{
+    path: '/table',
+     meta: {
+        title: '表格组件'
+    },
+    component: (resolve) => require(['./views/table.vue'], resolve)
 }, {
     path: '*',
     redirect: '/index'
