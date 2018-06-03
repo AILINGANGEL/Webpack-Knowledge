@@ -61,6 +61,7 @@ export default {
     render(h) {
         const ths = [];
         const trs = [];
+        const cols = [];
         this.currentColumns.forEach((col, index) => {
             if (col.sortable) {
                 ths.push(h('th', [
@@ -89,6 +90,11 @@ export default {
             } else {
                 ths.push(h('th', col.title));
             }
+            cols.push(h('col',{
+            	attrs: {
+            		width: col.width ? col.width: 'auto'
+            	}
+            }));
         });
         this.currentData.forEach((row) => {
             const tds = [];
@@ -97,7 +103,7 @@ export default {
             });
             trs.push(h('tr', tds));
         });
-        return h('table', [h('thead', [
+        return h('table', [h('colgroup', cols),h('thead', [
                 h('tr', ths)
             ]),
             h('tbody', trs)

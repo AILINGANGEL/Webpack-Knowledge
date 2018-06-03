@@ -14,7 +14,8 @@
 			return {
 				columns: [{
 				title: '姓名',
-				key: 'name'
+				key: 'name',
+				width: 100
 			}, {
 				title: '年龄',
 				key: 'age',
@@ -22,7 +23,9 @@
 			}, {
 				title: '出生日期',
 				key: 'birthday',
-				sortable: true
+				sortable: true,
+				width: 400,
+				align: 'center'
 			}, {
 				title: '地址',
 				key: 'address'
