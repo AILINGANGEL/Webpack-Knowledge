@@ -33,6 +33,12 @@ const routes = [{
     },
     component: (resolve) => require(['./views/user.vue'], resolve)
 },{
+    path: '/func',
+     meta: {
+        title: '函数组件'
+    },
+    component: (resolve) => require(['./views/func.vue'], resolve)
+}, {
     path: '*',
     redirect: '/index'
 }]
